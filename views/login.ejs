@@ -1,18 +1,37 @@
 <form action="/login" method="POST">
+  <!-- User type dropdown -->
   <div>
     <label for="user-type">Login as</label>
-    <input type="text" id="user-type" name="user-type" required>
+    <select id="user-type" name="user-type" required>
+      <option value="med-officer">Medical Officer</option>
+      <option value="medtech">MedTech</option>
+      <option value="nurse">Nurse</option>
+      <option value="doctor">Doctor</option>
+      <option value="pharmacist">Pharmacist</option>
+    </select>
   </div>
 
+  <!-- Username field -->
   <div>
     <label for="username">Username</label>
     <input type="text" id="username" name="username" required>
-  </div> 
-    
+  </div>
+  
+  <!-- Password field -->
   <div>
     <label for="password">Password</label>
     <input type="password" id="password" name="password" required>
   </div>
-
+  <!-- Submit button -->
   <button type="submit">Login</button>
+
+    <!-- Error message display -->
+    <% if (error_msg && error_msg.length > 0) { %>
+      <div class="flash-messages">
+        <% error_msg.forEach(function(message) { %>
+          <div class="alert alert-danger"><%= message %></div>
+        <% }) %>
+      </div>
+    <% } %>
+  
 </form>
